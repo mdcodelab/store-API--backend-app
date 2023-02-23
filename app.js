@@ -1,6 +1,7 @@
 const express=require("express")
 const app=express();
 require("dotenv").config();
+require("express-async-errors");
 const notFound=require("./middleware/notFound");
 const handleErrors=require("./middleware/handleErrors")
 const connectDB=require('./connectDB');
