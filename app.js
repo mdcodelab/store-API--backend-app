@@ -2,7 +2,8 @@ const express=require("express")
 const app=express();
 require("dotenv").config();
 const notFound=require("./middleware/notFound");
-const handleErrors=require("./middleware/handleErrors");
+const handleErrors=require("./middleware/handleErrors")
+const connectDB=require('./connectDB');
 
 
 app.use(express.json());
@@ -15,6 +16,8 @@ res.status(200).send("<h1>Store API</h1><a href='/api/v1/products'>Products</a>"
 
 const start = async () => {
     //connect DB
+    await connectDB(process.env.MONGO_URI)
+    console.log("DB connected")
     app.listen(port, console.log(`Server is listening at port ${port}`))
 }
 
