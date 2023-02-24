@@ -1,12 +1,13 @@
 const Product = require("../model/product")
 
 const getAllProductsStatic = async (req, res) => {
-    const search='ab';
+    //const search='ab';
     //const products = await Product.find({featured: true})
-    const products = await Product.find({
-        name: {$regex: search, $options: "i"}
-    })
+    // const products = await Product.find({
+    //     name: {$regex: search, $options: "i"}
+    // })
     //throw new Error("testing async errors")
+    let products= await Product.find({}).sort("-name price")
     res.status(200).json({products, hbHits: products.length})
 }
 
